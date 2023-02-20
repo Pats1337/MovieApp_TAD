@@ -7,4 +7,6 @@
     <dimen name="dimen_96">96dp</dimen>
     <dimen name="dimen_128">128dp</dimen>
     <dimen name="dimen_1">1dp</dimen>
+    <dimen name="dimen_168">168dp</dimen>
+    <dimen name="dimen_256">256dp</dimen>
 </resources>

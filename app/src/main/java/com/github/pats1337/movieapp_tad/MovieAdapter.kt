@@ -2,14 +2,18 @@ package com.github.pats1337.movieapp_tad
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MovieAdapter(private val filmList: List<Movie>) :
-    RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class MovieAdapter(
+    private val onClickListener: OnClickListener,
+    private val filmList: List<Movie>
+) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+
+        class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val id: TextView = itemView.findViewById(R.id.movie_id)
         val title: TextView = itemView.findViewById(R.id.movie_title)
         val cover: ImageView = itemView.findViewById(R.id.movie_cover)
@@ -35,10 +39,17 @@ class MovieAdapter(private val filmList: List<Movie>) :
         holder.release.setText(item.releaseDate)
         holder.rating.setText(item.rating)
         holder.description.setText(item.description)
+        holder.itemView.setOnClickListener{
+            onClickListener.onClick(item)
+        }
     }
 
     override fun getItemCount(): Int {
         return filmList.size
+    }
+
+    class OnClickListener(val clickListener: (movie: Movie) -> Unit) {
+        fun onClick(movie: Movie) = clickListener(movie)
     }
 
 }
