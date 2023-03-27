@@ -1,17 +1,16 @@
 package com.github.pats1337.movieapp_tad
 
-import androidx.annotation.StringRes
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+data class Movies(
+    val movies: ArrayList<Movie>
+)
 
-@Parcelize
 data class Movie(
     val id: Int,
-    @StringRes val title: Int,
-    val cover: Int,
+    val title: String,
+    val cover: String,
     val releaseDate: Int,
-    val rating: Int,
-    @StringRes val description: Int
-) : Parcelable {
+    val rating: String,
+    val description: String
+) {
 
 }
